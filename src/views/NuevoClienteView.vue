@@ -1,11 +1,10 @@
 <script>
-    import {RouterLink} from 'vue-router'
 </script>
 
 <template>
     <div>
-        <div>
-            <RouterLink :to="{name:'home'}">
+        <div class="flex justify-end">
+            <RouterLink :to="Inicio">
                 Volver
             </RouterLink>
         </div>
