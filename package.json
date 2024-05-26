@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formkit/vue": "^1.6.3",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
@@ -29,5 +30,5 @@
       "plugin:vue/vue3-essential",
       "eslint:recommended"
     ]
-    }
+  }
 }
