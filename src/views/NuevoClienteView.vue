@@ -1,16 +1,21 @@
 <script>
+import ClienteService from '../services/ClienteService';
 import RouterLink from '../components/UI/RouterLink.vue';
-import Heading from '../components/UI/Heading.vue'
+defineProps({
+        titulo: {
+            type: String
+        }
+    })
 </script>
 
 <template>
     <div>
         <div class="flex justify-end">
-            <RouterLink :to="Inicio">
+            <RouterLink :to="inicio">
                 Volver
             </RouterLink>
         </div>
-       <Heading>Agregar Clientes</Heading>
+        <Heading>{{ titulo }}</Heading>
     </div>
 </template>
 
