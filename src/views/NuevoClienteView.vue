@@ -2,11 +2,16 @@
 import { FormKit } from "@formkit/vue";
 import RouterLink from "../components/UI/RouterLink.vue";
 import Heading from "../components/UI/Heading.vue";
+
 defineProps({
   titulo: {
-    type: String,
-  },
+    type: String
+  }
 })
+
+// const formData = reactive({
+//     nombre:'Juan'
+// })
 
 const handleSubmit = (data) => {
 console.log(data)
