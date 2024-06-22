@@ -18,13 +18,18 @@ defineProps({
     type: String,
   },
 });
-
-const handleSubmit = (data) => {
-  ClienteService.obtenerCliente(id)
+onMounted(() => {
+    ClienteService.obtenerCliente(id)
     .then(({ data }) => {
       Object.assingn(formData, data);
     })
     .catch((error) => console.log(error));
+})
+
+const handleSubmit = (data) => {
+ ClienteService.actualizarCliente(id,data)
+ .then(() => router.push({name:'listado-clientes'}))
+ .catch(error => console.log(error))
 };
 </script>
 
@@ -39,7 +44,7 @@ const handleSubmit = (data) => {
       <div class="mx-auto md:w-2/3 py-20 px-6">
         <FormKit
           type="form"
-          submit-label="Agregar Cliente"
+          submit-label="Guardar Cambios"
           incomplete-message="No se pudo enviar, revisa los mensajes"
           @submit="handleSubmit"
           :value="formData"
