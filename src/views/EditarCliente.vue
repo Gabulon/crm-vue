@@ -1,4 +1,5 @@
 <script>
+import { onMounted } from 'vue'
 import ClienteService from "../services/ClienteService";
 import { FormKit} from "@formkit/vue";
 import { useRouter, useRoute} from "vue-router";
@@ -17,7 +18,9 @@ defineProps({
 })
 
 const handleSubmit = (data) => {
- 
+ ClienteService.obtenerCliente(id)
+ .then(({data}) => console.log(data))
+ .catch(error => console.log(error))
 }
 </script>
 
