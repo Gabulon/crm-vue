@@ -6,20 +6,30 @@ import Heading from '../components/UI/Heading.vue';
 import Cliente from '../components/UI/Cliente.vue'
 const clientes =ref([])
 
-onMounted(() =>{
+ onMounted(() =>{
     ClienteService.obtenerClientes
     .then(({data}) => clientes.value = data)
     .catch(error => console.log('Huboun error'))
 })
 
-defineProps({
+ defineProps({
         titulo: {
             type: String
         }
     })
+    
     const existenClientes = computed(() => {
         return clientes.value.length>0
-    })
+    })        
+
+    const actulizarEstado = ({id,estado}) =>{
+        ClienteService.cambiarEstado(id,{estado:!estado})
+        .then(() =>{
+            const i= clientes.value.findIndex(cliente =>cliente.id ===id)
+            clientes.value[i].estado  =!estado
+        })
+        .catch(error => console.log(error))
+    }
 </script>
 <template>
     <div>
@@ -45,6 +55,7 @@ defineProps({
                                <Cliente v-for="cliente in clientes"
                                :key="cliente.id"
                                :cliente="cliente"
+                               @actualizar-estado="actulizarEstado"
                                /> 
                         </tbody>
                     </table>
